@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>iframe test</title>
+    <script type="text/javascript" src="../test.js"></script>
+    <script type="text/javascript">
+        function setUp() {
+            var iFrame = document.createElement("iframe");
+            document.getElementById("iFrameContainer").appendChild(iFrame);
+            iFrame.style.width = 500;
+            iFrame.style.height = 500;
+            var iFrameDocument = iFrame.contentDocument;
+            iFrameDocument.open();
+            iFrameDocument.write("\
+<!DOCTYPE html>\
+<html>\
+<head lang=\"en\">\
+    <meta charset=\"UTF-8\">\
+    <title>frame 1</title>\
+    <style>\
+        body {\
+            background: green;\
+            color: red;\
+        }\
+    </style>\
+</head>\
+<body>\
+this is the content of frame1\
+</body>\
+</html>"
+            );
+            iFrameDocument.close();
+        }
+    </script></head>
+<body>
+    <div style="background: cornflowerblue; padding: 20px; width: 200px;">Parent document content</div>
+    <div id="iFrameContainer"></div>
+</body>
+</html>
